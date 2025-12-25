@@ -23,19 +23,6 @@ The component is inspired by modern discovery-based mobile interfaces, but desig
 
 ---
 
-## Animation Preview
-
-The animation above is a real recording of the component behavior:
-
-* Real-time lift and scale while swiping
-* Velocity-aware swipe dismissal
-* Smooth card stack reordering
-* Zero overshoot spring recovery
-
-> To update the animation, simply replace `preview.gif` in the root directory.
-
----
-
 ## Interaction Design Principles
 
 ### Gesture-Based Decision Making
