@@ -1,4 +1,4 @@
-# Advanced Swipeable Card Stack (React Native)
+<h1 align="center">Advanced Swipeable Card Stack (React Native)</h1>
 
 <p align="center">
   <img src="./preview.gif" alt="Swipe Preview" width="300" />
