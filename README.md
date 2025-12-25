@@ -1,7 +1,7 @@
 <h1 align="center">Advanced Swipeable Card Stack (React Native)</h1>
 
 <p align="center">
-  <img src="./preview.gif" alt="Swipe Preview" width="300" />
+  <img src="https://raw.githubusercontent.com/Ranggis/Api-Image/main/Preview.gif" alt="Swipe Preview" width="300" />
 </p>
 
 <p align="center">
@@ -144,3 +144,10 @@ Easily adjustable parameters include:
 * Spring configuration
 
 All core values are centralized for maintainability.
+
+---
+
+## Author
+
+**Ranggis**
+Created with coffee ☕ and a strong focus on interaction design, animation physics, and clean React Native architecture.
