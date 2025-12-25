@@ -1,50 +1,146 @@
-# Welcome to your Expo app 👋
+# Advanced Swipeable Card Stack (React Native)
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+<p align="center">
+  <img src="./preview.gif" alt="Swipe Preview" width="300" />
+</p>
 
-## Get started
+<p align="center">
+  <img src="https://img.shields.io/badge/React_Native-0.72+-20232A?style=for-the-badge&logo=react" />
+  <img src="https://img.shields.io/badge/Reanimated-3.x-blueviolet?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Gesture_Handler-2.x-orange?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Expo-Compatible-success?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/License-MIT-lightgrey?style=for-the-badge" />
+</p>
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## Overview
 
-2. Start the app
+This repository contains an **advanced swipeable card stack interaction** built with **React Native**, **Reanimated v3**, and **React Native Gesture Handler**.
+The implementation focuses on **natural motion**, **gesture-driven physics**, and **high-performance animations** suitable for production-grade mobile applications.
 
-   ```bash
-   npx expo start
-   ```
+The component is inspired by modern discovery-based mobile interfaces, but designed with **clean architecture** and **precise animation control** rather than visual gimmicks.
 
-In the output, you'll find options to open the app in a
+---
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+## Animation Preview
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+The animation above is a real recording of the component behavior:
 
-## Get a fresh project
+* Real-time lift and scale while swiping
+* Velocity-aware swipe dismissal
+* Smooth card stack reordering
+* Zero overshoot spring recovery
 
-When you're ready, run:
+> To update the animation, simply replace `preview.gif` in the root directory.
 
-```bash
-npm run reset-project
+---
+
+## Interaction Design Principles
+
+### Gesture-Based Decision Making
+
+Swipe resolution is determined using **both translation distance and swipe velocity**, ensuring intuitive behavior:
+
+* Short or slow gestures snap back
+* Fast flicks trigger dismissal
+* Direction is inferred automatically
+
+This creates a balance between **precision** and **responsiveness**.
+
+---
+
+### Real-Time Visual Feedback
+
+During swipe interaction, the top card dynamically:
+
+* Elevates vertically (lift effect)
+* Scales up slightly
+* Rotates proportionally to horizontal movement
+
+All effects are driven by shared animated values and calculated on the **UI thread**, maintaining smooth 60 FPS performance.
+
+---
+
+### Stack Progress Synchronization
+
+A global animated value synchronizes background cards:
+
+* Progressive scaling
+* Vertical offset interpolation
+* Seamless promotion of the next card
+
+This avoids unnecessary re-renders and preserves animation continuity.
+
+---
+
+### Controlled Spring Physics
+
+Spring animations are tuned to prevent jitter and overshoot:
+
+* High damping for stability
+* Overshoot clamping enabled
+* Predictable rest thresholds
+
+Result: cards stop **exactly** at their target position without bounce artifacts.
+
+---
+
+## Component Architecture
+
+```
+SwipeableCard (Root)
+ └─ Card (Reusable Component)
+     ├─ Pan Gesture Handler
+     ├─ Animated Transforms
+     ├─ Icon Overlays (Like / Dislike)
+     └─ Text Overlay
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+Each card is isolated, reusable, and controlled entirely through shared animated values.
 
-## Learn more
+---
 
-To learn more about developing your project with Expo, look at the following resources:
+## Tech Stack
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+* React Native
+* React Native Reanimated v3
+* React Native Gesture Handler
+* Expo Vector Icons
+* Safe Area Context
 
-## Join the community
+All animations run on the **UI thread**, ensuring optimal performance on both Android and iOS.
 
-Join our community of developers creating universal apps.
+---
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+## Performance Considerations
+
+* No `setState` calls during gesture updates
+* No layout recalculation during animation
+* GPU-friendly transforms only (`translate`, `scale`, `rotate`)
+* Minimal memory overhead
+
+The component is safe to use in **large-scale applications**.
+
+---
+
+## Use Cases
+
+* Dating or matching applications
+* Discovery-based browsing interfaces
+* Card-based onboarding flows
+* Media or product exploration apps
+
+---
+
+## Customization
+
+Easily adjustable parameters include:
+
+* Swipe sensitivity
+* Card dimensions
+* Stack depth and spacing
+* Rotation intensity
+* Spring configuration
+
+All core values are centralized for maintainability.
